@@ -106,7 +106,57 @@ public class Pvylon {
     // Add the example block item to the ingredients tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.ACTIVATOR_SHARD);
+            event.accept(ModItems.ANCIENT_SHARD);
+            event.accept(ModItems.BATTERY);
+            event.accept(ModItems.BLACKBONE);
+            event.accept(ModItems.BORS_CLAW);
+            event.accept(ModItems.CELESTIAL_SILVER);
+            event.accept(ModItems.CLANKER_HEART);
+            event.accept(ModItems.COPPER_DUST);
+            event.accept(ModItems.COPPER_THREAD);
+            event.accept(ModItems.DIAMOND_DUST);
+            event.accept(ModItems.DIVINE_MEMBRANE);
+            event.accept(ModItems.DREAM_WHEAT);
+            event.accept(ModItems.ENDLESS_CITY_HEART);
+            event.accept(ModItems.ENDLESS_SEA_HEART);
+            event.accept(ModItems.ENDLESS_WASTELAND_HEART);
+            event.accept(ModItems.EYE_OF_CTHULHU);
+            event.accept(ModItems.GLASS_SHARD);
+            event.accept(ModItems.GOLD_DUST);
+            event.accept(ModItems.GOLD_HAND);
+            event.accept(ModItems.GRAPHENE);
+            event.accept(ModItems.IRON_BAR);
+            event.accept(ModItems.IRON_DUST);
+            event.accept(ModItems.LARGE_CASE);
+            event.accept(ModItems.LARGE_SCREEN);
+            event.accept(ModItems.LIGHT_CORE);
+            event.accept(ModItems.MEDIUM_CASE);
+            event.accept(ModItems.MEDIUM_SCREEN);
+            event.accept(ModItems.MOTOR);
+            event.accept(ModItems.NIGHTMARE_HEART);
+            event.accept(ModItems.POWERSTONE_SCRAP);
+            event.accept(ModItems.RADIANT_HEART);
+            event.accept(ModItems.RAW_TRANITE);
+            event.accept(ModItems.SEA_PEARL);
+            event.accept(ModItems.SHARP_NEEDLE);
+            event.accept(ModItems.SILVER_DUST);
+            event.accept(ModItems.SMALL_CASE);
+            event.accept(ModItems.SMALL_SCREEN);
+            event.accept(ModItems.SPRING);
+            event.accept(ModItems.STEEL_SCRAP);
+            event.accept(ModItems.SUSPICIOUS_HANDLE);
+            event.accept(ModItems.THERMITE);
+            event.accept(ModItems.TRANITE_DUST);
+            event.accept(ModItems.TRANITE_INGOT);
+            event.accept(ModItems.TRANITE_NUGGET);
+            event.accept(ModItems.TRANSMUTATION_GEM);
+            event.accept(ModItems.TUNGSTEN_DUST);
+            event.accept(ModItems.VOID_HEART);
+            event.accept(ModItems.WASTELAND_FABRIC);
+            event.accept(ModItems.WIRES);
             event.accept(ModItems.SILVER);
+            event.accept(ModItems.RAW_SILVER);
         }
     }
 
