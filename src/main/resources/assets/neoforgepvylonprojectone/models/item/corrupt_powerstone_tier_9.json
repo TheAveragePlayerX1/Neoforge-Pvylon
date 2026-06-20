@@ -1,0 +1,6 @@
+{
+  "parent":  "minecraft:item/generated",
+  "textures": {
+    "layer0": "neoforgepvylonprojectone:item/corrupt_powerstone_tier_9"
+}
+}

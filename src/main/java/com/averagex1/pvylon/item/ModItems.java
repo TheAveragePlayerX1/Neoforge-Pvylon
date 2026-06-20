@@ -21,6 +21,33 @@ public class ModItems {
     public static final DeferredItem<Item> RAW_WOLFRAMITE = ITEMS.register("raw_wolframite",
             () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> CORRUPT_POWERSTONE_TIER_1 = ITEMS.register("corrupt_powerstone_tier_1",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> CORRUPT_POWERSTONE_TIER_2 = ITEMS.register("corrupt_powerstone_tier_2",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> CORRUPT_POWERSTONE_TIER_3 = ITEMS.register("corrupt_powerstone_tier_3",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> CORRUPT_POWERSTONE_TIER_4 = ITEMS.register("corrupt_powerstone_tier_4",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> CORRUPT_POWERSTONE_TIER_5 = ITEMS.register("corrupt_powerstone_tier_5",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> CORRUPT_POWERSTONE_TIER_6 = ITEMS.register("corrupt_powerstone_tier_6",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> CORRUPT_POWERSTONE_TIER_7 = ITEMS.register("corrupt_powerstone_tier_7",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> CORRUPT_POWERSTONE_TIER_8 = ITEMS.register("corrupt_powerstone_tier_8",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> CORRUPT_POWERSTONE_TIER_9 = ITEMS.register("corrupt_powerstone_tier_9",
+            () -> new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> ACTIVATOR_SHARD = ITEMS.register("activator_shard",
             () -> new Item(new Item.Properties()));
 
@@ -111,13 +138,103 @@ public class ModItems {
     public static final DeferredItem<Item> POWERSTONE_SCRAP = ITEMS.register("powerstone_scrap",
             () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> POWERSTONE_TIER_1 = ITEMS.register("powerstone_tier_1",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> POWERSTONE_TIER_2 = ITEMS.register("powerstone_tier_2",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> POWERSTONE_TIER_3 = ITEMS.register("powerstone_tier_3",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> POWERSTONE_TIER_4 = ITEMS.register("powerstone_tier_4",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> POWERSTONE_TIER_5 = ITEMS.register("powerstone_tier_5",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> POWERSTONE_TIER_6 = ITEMS.register("powerstone_tier_6",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> POWERSTONE_TIER_7 = ITEMS.register("powerstone_tier_7",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> POWERSTONE_TIER_8 = ITEMS.register("powerstone_tier_8",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> POWERSTONE_TIER_9 = ITEMS.register("powerstone_tier_9",
+            () -> new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> RADIANT_HEART = ITEMS.register("radiant_heart",
             () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> RAW_TRANITE = ITEMS.register("raw_tranite",
             () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> PURE_POWERSTONE_TIER_1 = ITEMS.register("pure_powerstone_tier_1",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> PURE_POWERSTONE_TIER_2 = ITEMS.register("pure_powerstone_tier_2",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> PURE_POWERSTONE_TIER_3 = ITEMS.register("pure_powerstone_tier_3",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> PURE_POWERSTONE_TIER_4 = ITEMS.register("pure_powerstone_tier_4",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> PURE_POWERSTONE_TIER_5 = ITEMS.register("pure_powerstone_tier_5",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> PURE_POWERSTONE_TIER_6 = ITEMS.register("pure_powerstone_tier_6",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> PURE_POWERSTONE_TIER_7 = ITEMS.register("pure_powerstone_tier_7",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> PURE_POWERSTONE_TIER_8 = ITEMS.register("pure_powerstone_tier_8",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> PURE_POWERSTONE_TIER_9 = ITEMS.register("pure_powerstone_tier_9",
+            () -> new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> SEA_PEARL = ITEMS.register("sea_pearl",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> SIZE_ONE_FISH = ITEMS.register("size_one_fish",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> SIZE_TWO_FISH = ITEMS.register("size_two_fish",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> SIZE_THREE_FISH = ITEMS.register("size_three_fish",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> SIZE_FOUR_FISH = ITEMS.register("size_four_fish",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> SIZE_FIVE_FISH = ITEMS.register("size_five_fish",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> SIZE_SIX_FISH = ITEMS.register("size_six_fish",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> SIZE_SEVEN_FISH = ITEMS.register("size_seven_fish",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> SIZE_EIGHT_FISH = ITEMS.register("size_eight_fish",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> SIZE_NINE_FISH = ITEMS.register("size_nine_fish",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> SIZE_TEN_FISH = ITEMS.register("size_ten_fish",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> SIZE_ELEVEN_FISH = ITEMS.register("size_eleven_fish",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> SIZE_TWELVE_FISH = ITEMS.register("size_twelve_fish",
             () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> SHARP_NEEDLE = ITEMS.register("sharp_needle",
