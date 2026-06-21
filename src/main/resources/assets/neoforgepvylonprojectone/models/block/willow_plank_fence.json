@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "neoforgepvylonprojectone:block/willow_plank_fence"
+  }
+}

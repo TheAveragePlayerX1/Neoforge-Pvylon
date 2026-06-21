@@ -5,9 +5,16 @@ import com.averagex1.pvylon.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ButtonBlock;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -679,6 +686,133 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
 
+    public static final DeferredBlock<StairBlock> WILLOW_PLANK_STAIRS = registerBlock("willow_plank_stairs",
+            () -> new StairBlock(ModBlocks.WILLOW_PLANKS.get().defaultBlockState(),
+                    BlockBehaviour.Properties.of().strength(2f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+
+    public static final DeferredBlock<SlabBlock> STEEL_SLAB = registerBlock("steel_slab",
+            () -> new SlabBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<StairBlock> STEEL_STAIRS = registerBlock("steel_stairs",
+            () -> new StairBlock(ModBlocks.STEEL_BLOCK.get().defaultBlockState(), defaultVariantProperties()));
+
+    public static final DeferredBlock<WallBlock> STEEL_WALL = registerBlock("steel_wall",
+            () -> new WallBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<SlabBlock> LIGHTSTONE_SLAB = registerBlock("lightstone_slab",
+            () -> new SlabBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<StairBlock> LIGHTSTONE_STAIRS = registerBlock("lightstone_stairs",
+            () -> new StairBlock(ModBlocks.LIGHTSTONE.get().defaultBlockState(), defaultVariantProperties()));
+
+    public static final DeferredBlock<WallBlock> LIGHTSTONE_WALL = registerBlock("lightstone_wall",
+            () -> new WallBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<ButtonBlock> LIGHTSTONE_BUTTON = registerBlock("lightstone_button",
+            () -> new ButtonBlock(BlockSetType.STONE, 30, defaultVariantProperties()));
+
+    public static final DeferredBlock<Block> LIGHTSTONE_BRICKS = registerBlock("lightstone_bricks",
+            () -> new Block(defaultVariantProperties()));
+
+    public static final DeferredBlock<SlabBlock> WILLOW_PLANK_SLAB = registerBlock("willow_plank_slab",
+            () -> new SlabBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<FenceBlock> WILLOW_PLANK_FENCE = registerBlock("willow_plank_fence",
+            () -> new FenceBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<DoorBlock> WILLOW_PLANK_DOOR = registerBlock("willow_plank_door",
+            () -> new DoorBlock(BlockSetType.OAK, defaultVariantProperties()));
+
+    public static final DeferredBlock<SlabBlock> DARKSTONE_SLATE_SLAB = registerBlock("darkstone_slate_slab",
+            () -> new SlabBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<StairBlock> DARKSTONE_SLATE_STAIRS = registerBlock("darkstone_slate_stairs",
+            () -> new StairBlock(ModBlocks.DARKSTONE_SLATE.get().defaultBlockState(), defaultVariantProperties()));
+
+    public static final DeferredBlock<WallBlock> DARKSTONE_SLATE_WALL = registerBlock("darkstone_slate_wall",
+            () -> new WallBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<ButtonBlock> DARKSTONE_SLATE_BUTTON = registerBlock("darkstone_slate_button",
+            () -> new ButtonBlock(BlockSetType.STONE, 30, defaultVariantProperties()));
+
+    public static final DeferredBlock<Block> DARKSTONE_SLATE_BRICKS = registerBlock("darkstone_slate_bricks",
+            () -> new Block(defaultVariantProperties()));
+
+    public static final DeferredBlock<SlabBlock> DARKSTONE_SLAB = registerBlock("darkstone_slab",
+            () -> new SlabBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<StairBlock> DARKSTONE_STAIRS = registerBlock("darkstone_stairs",
+            () -> new StairBlock(ModBlocks.DARKSTONE.get().defaultBlockState(), defaultVariantProperties()));
+
+    public static final DeferredBlock<WallBlock> DARKSTONE_WALL = registerBlock("darkstone_wall",
+            () -> new WallBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<ButtonBlock> DARKSTONE_BUTTON = registerBlock("darkstone_button",
+            () -> new ButtonBlock(BlockSetType.STONE, 30, defaultVariantProperties()));
+
+    public static final DeferredBlock<Block> DARKSTONE_BRICKS = registerBlock("darkstone_bricks",
+            () -> new Block(defaultVariantProperties()));
+
+    public static final DeferredBlock<SlabBlock> DARKLANDS_MAHOGANY_PLANK_SLAB = registerBlock("darklands_mahogany_plank_slab",
+            () -> new SlabBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<StairBlock> DARKLANDS_MAHOGANY_PLANK_STAIRS = registerBlock("darklands_mahogany_plank_stairs",
+            () -> new StairBlock(ModBlocks.DARKLANDS_MAHOGANY_PLANKS.get().defaultBlockState(), defaultVariantProperties()));
+
+    public static final DeferredBlock<FenceBlock> DARKLANDS_MAHOGANY_PLANK_FENCE = registerBlock("darklands_mahogany_plank_fence",
+            () -> new FenceBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<DoorBlock> DARKLANDS_MAHOGANY_PLANK_DOOR = registerBlock("darklands_mahogany_plank_door",
+            () -> new DoorBlock(BlockSetType.OAK, defaultVariantProperties()));
+
+    public static final DeferredBlock<SlabBlock> WASTELAND_STONE_SLAB = registerBlock("wasteland_stone_slab",
+            () -> new SlabBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<StairBlock> WASTELAND_STONE_STAIRS = registerBlock("wasteland_stone_stairs",
+            () -> new StairBlock(ModBlocks.WASTELAND_STONE.get().defaultBlockState(), defaultVariantProperties()));
+
+    public static final DeferredBlock<WallBlock> WASTELAND_STONE_WALL = registerBlock("wasteland_stone_wall",
+            () -> new WallBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<ButtonBlock> WASTELAND_STONE_BUTTON = registerBlock("wasteland_stone_button",
+            () -> new ButtonBlock(BlockSetType.STONE, 30, defaultVariantProperties()));
+
+    public static final DeferredBlock<Block> WASTELAND_STONE_BRICKS = registerBlock("wasteland_stone_bricks",
+            () -> new Block(defaultVariantProperties()));
+
+    public static final DeferredBlock<SlabBlock> WASTELAND_COBBLESTONE_SLAB = registerBlock("wasteland_cobblestone_slab",
+            () -> new SlabBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<StairBlock> WASTELAND_COBBLESTONE_STAIRS = registerBlock("wasteland_cobblestone_stairs",
+            () -> new StairBlock(ModBlocks.WASTELAND_COBBLESTONE.get().defaultBlockState(), defaultVariantProperties()));
+
+    public static final DeferredBlock<WallBlock> WASTELAND_COBBLESTONE_WALL = registerBlock("wasteland_cobblestone_wall",
+            () -> new WallBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<ButtonBlock> WASTELAND_COBBLESTONE_BUTTON = registerBlock("wasteland_cobblestone_button",
+            () -> new ButtonBlock(BlockSetType.STONE, 30, defaultVariantProperties()));
+
+    public static final DeferredBlock<Block> WASTELAND_COBBLESTONE_BRICKS = registerBlock("wasteland_cobblestone_bricks",
+            () -> new Block(defaultVariantProperties()));
+
+    public static final DeferredBlock<SlabBlock> FAIRY_WILLOW_PLANK_SLAB = registerBlock("fairy_willow_plank_slab",
+            () -> new SlabBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<StairBlock> FAIRY_WILLOW_PLANK_STAIRS = registerBlock("fairy_willow_plank_stairs",
+            () -> new StairBlock(ModBlocks.FAIRY_WILLOW_PLANKS.get().defaultBlockState(), defaultVariantProperties()));
+
+    public static final DeferredBlock<FenceBlock> FAIRY_WILLOW_PLANK_FENCE = registerBlock("fairy_willow_plank_fence",
+            () -> new FenceBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<DoorBlock> FAIRY_WILLOW_PLANK_DOOR = registerBlock("fairy_willow_plank_door",
+            () -> new DoorBlock(BlockSetType.OAK, defaultVariantProperties()));
+
+    public static final DeferredBlock<WallBlock> METAL_PIPE_WALL = registerBlock("metal_pipe_wall",
+            () -> new WallBlock(defaultVariantProperties()));
+
+    public static final DeferredBlock<SlabBlock> STEEL_PLATE = registerBlock("steel_plate",
+            () -> new SlabBlock(defaultVariantProperties()));
+
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
@@ -687,6 +821,10 @@ public class ModBlocks {
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
         ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+    }
+
+    private static BlockBehaviour.Properties defaultVariantProperties() {
+        return BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops().sound(SoundType.METAL);
     }
 
     public static void register(IEventBus eventBus) {
