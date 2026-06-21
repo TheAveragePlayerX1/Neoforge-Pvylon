@@ -1,5 +1,6 @@
 package com.averagex1.pvylon;
 
+import com.averagex1.pvylon.block.ModBlocks;
 import com.averagex1.pvylon.item.ModItems;
 import org.slf4j.Logger;
 
@@ -31,67 +32,41 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-// The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(Pvylon.MODID)
 public class Pvylon {
-    // Define mod id in a common place for everything to reference
     public static final String MODID = "neoforgepvylonprojectone";
-    // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
-    // Create a Deferred Register to hold Blocks which will all be registered under the "examplemod" namespace
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
-    // Create a Deferred Register to hold Items which will all be registered under the "examplemod" namespace
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
-    // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "examplemod" namespace
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
-    // Creates a new Block with the id "examplemod:example_block", combining the namespace and path
     public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerSimpleBlock("example_block", BlockBehaviour.Properties.of().mapColor(MapColor.STONE));
-    // Creates a new BlockItem with the id "examplemod:example_block", combining the namespace and path
     public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block", EXAMPLE_BLOCK);
 
-    // Creates a new food item with the id "examplemod:example_id", nutrition 1 and saturation 2
     public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("example_item", new Item.Properties().food(new FoodProperties.Builder()
             .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
 
-    // Creates a creative tab with the id "examplemod:example_tab" for the example item, that is placed after the combat tab
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.examplemod")) //The language key for the title of your CreativeModeTab
+            .title(Component.translatable("itemGroup.examplemod"))
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> EXAMPLE_ITEM.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(EXAMPLE_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
+                output.accept(EXAMPLE_ITEM.get());
             }).build());
 
-    // The constructor for the mod class is the first code that is run when your mod is loaded.
-    // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public Pvylon(IEventBus modEventBus, ModContainer modContainer) {
-        // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
-        // Register the Deferred Register to the mod event bus so blocks get registered
         BLOCKS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so items get registered
         ITEMS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
-
-        // Register ourselves for server and other game events we are interested in.
-        // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
-        // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
-
         ModItems.register(modEventBus);
-
-        // Register the item to a creative tab
+        ModBlocks.register(modEventBus);
         modEventBus.addListener(this::addCreative);
-
-        // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-        // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
 
         if (Config.LOG_DIRT_BLOCK.getAsBoolean()) {
@@ -103,106 +78,179 @@ public class Pvylon {
         Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
     }
 
-    // Add the example block item to the ingredients tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.ACTIVATOR_SHARD);
-            event.accept(ModItems.ANCIENT_SHARD);
-            event.accept(ModItems.BATTERY);
-            event.accept(ModItems.BLACKBONE);
-            event.accept(ModItems.BORS_CLAW);
-            event.accept(ModItems.CELESTIAL_SILVER);
-            event.accept(ModItems.CLANKER_HEART);
-            event.accept(ModItems.COPPER_DUST);
-            event.accept(ModItems.COPPER_THREAD);
-            event.accept(ModItems.CORRUPT_POWERSTONE_TIER_1);
-            event.accept(ModItems.CORRUPT_POWERSTONE_TIER_2);
-            event.accept(ModItems.CORRUPT_POWERSTONE_TIER_3);
-            event.accept(ModItems.CORRUPT_POWERSTONE_TIER_4);
-            event.accept(ModItems.CORRUPT_POWERSTONE_TIER_5);
-            event.accept(ModItems.CORRUPT_POWERSTONE_TIER_6);
-            event.accept(ModItems.CORRUPT_POWERSTONE_TIER_7);
-            event.accept(ModItems.CORRUPT_POWERSTONE_TIER_8);
-            event.accept(ModItems.CORRUPT_POWERSTONE_TIER_9);
-            event.accept(ModItems.DIAMOND_DUST);
-            event.accept(ModItems.DIVINE_MEMBRANE);
-            event.accept(ModItems.DREAM_WHEAT);
-            event.accept(ModItems.ENDLESS_CITY_HEART);
-            event.accept(ModItems.ENDLESS_SEA_HEART);
-            event.accept(ModItems.ENDLESS_WASTELAND_HEART);
-            event.accept(ModItems.EYE_OF_CTHULHU);
-            event.accept(ModItems.GLASS_SHARD);
-            event.accept(ModItems.GOLD_DUST);
-            event.accept(ModItems.GOLD_HAND);
-            event.accept(ModItems.GRAPHENE);
-            event.accept(ModItems.IRON_BAR);
-            event.accept(ModItems.IRON_DUST);
-            event.accept(ModItems.LARGE_CASE);
-            event.accept(ModItems.LARGE_SCREEN);
-            event.accept(ModItems.LIGHT_CORE);
-            event.accept(ModItems.MEDIUM_CASE);
-            event.accept(ModItems.MEDIUM_SCREEN);
-            event.accept(ModItems.MOTOR);
-            event.accept(ModItems.NIGHTMARE_HEART);
-            event.accept(ModItems.POWERSTONE_SCRAP);
-            event.accept(ModItems.POWERSTONE_TIER_1);
-            event.accept(ModItems.POWERSTONE_TIER_2);
-            event.accept(ModItems.POWERSTONE_TIER_3);
-            event.accept(ModItems.POWERSTONE_TIER_4);
-            event.accept(ModItems.POWERSTONE_TIER_5);
-            event.accept(ModItems.POWERSTONE_TIER_6);
-            event.accept(ModItems.POWERSTONE_TIER_7);
-            event.accept(ModItems.POWERSTONE_TIER_8);
-            event.accept(ModItems.POWERSTONE_TIER_9);
-            event.accept(ModItems.RADIANT_HEART);
-            event.accept(ModItems.RAW_TRANITE);
-            event.accept(ModItems.PURE_POWERSTONE_TIER_1);
-            event.accept(ModItems.PURE_POWERSTONE_TIER_2);
-            event.accept(ModItems.PURE_POWERSTONE_TIER_3);
-            event.accept(ModItems.PURE_POWERSTONE_TIER_4);
-            event.accept(ModItems.PURE_POWERSTONE_TIER_5);
-            event.accept(ModItems.PURE_POWERSTONE_TIER_6);
-            event.accept(ModItems.PURE_POWERSTONE_TIER_7);
-            event.accept(ModItems.PURE_POWERSTONE_TIER_8);
-            event.accept(ModItems.PURE_POWERSTONE_TIER_9);
-            event.accept(ModItems.SEA_PEARL);
-            event.accept(ModItems.SIZE_ONE_FISH);
-            event.accept(ModItems.SIZE_TWO_FISH);
-            event.accept(ModItems.SIZE_THREE_FISH);
-            event.accept(ModItems.SIZE_FOUR_FISH);
-            event.accept(ModItems.SIZE_FIVE_FISH);
-            event.accept(ModItems.SIZE_SIX_FISH);
-            event.accept(ModItems.SIZE_SEVEN_FISH);
-            event.accept(ModItems.SIZE_EIGHT_FISH);
-            event.accept(ModItems.SIZE_NINE_FISH);
-            event.accept(ModItems.SIZE_TEN_FISH);
-            event.accept(ModItems.SIZE_ELEVEN_FISH);
-            event.accept(ModItems.SIZE_TWELVE_FISH);
-            event.accept(ModItems.SHARP_NEEDLE);
-            event.accept(ModItems.SILVER_DUST);
-            event.accept(ModItems.SMALL_CASE);
-            event.accept(ModItems.SMALL_SCREEN);
-            event.accept(ModItems.SPRING);
-            event.accept(ModItems.STEEL_SCRAP);
-            event.accept(ModItems.SUSPICIOUS_HANDLE);
-            event.accept(ModItems.THERMITE);
-            event.accept(ModItems.TRANITE_DUST);
-            event.accept(ModItems.TRANITE_INGOT);
-            event.accept(ModItems.TRANITE_NUGGET);
-            event.accept(ModItems.TRANSMUTATION_GEM);
-            event.accept(ModItems.TUNGSTEN_DUST);
-            event.accept(ModItems.VOID_HEART);
-            event.accept(ModItems.WASTELAND_FABRIC);
-            event.accept(ModItems.WIRES);
-            event.accept(ModItems.SILVER);
-            event.accept(ModItems.RAW_SILVER);
+
+        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(ModBlocks.BLACK_CITY_FLOOR_BLOCK);
+            event.accept(ModBlocks.BLACK_DUNGEON_BLOCK);
+            event.accept(ModBlocks.BLACK_DUNGEON_PILLAR);
+            event.accept(ModBlocks.BLACK_DUNGEON_STAIRS);
+            event.accept(ModBlocks.BLACK_DYED_STEEL_BLOCK);
+            event.accept(ModBlocks.BLACK_STEEL_BORDERED_GLASS);
+            event.accept(ModBlocks.BLACK_TINTED_DUNGEON_GLASS);
+            event.accept(ModBlocks.BLACKBONE_BLOCK);
+            event.accept(ModBlocks.BLUE_CITY_FLOOR_BLOCK);
+            event.accept(ModBlocks.BLUE_DUNGEON_BLOCK);
+            event.accept(ModBlocks.BLUE_DUNGEON_PILLAR);
+            event.accept(ModBlocks.BLUE_DUNGEON_STAIRS);
+            event.accept(ModBlocks.BLUE_DYED_STEEL_BLOCK);
+            event.accept(ModBlocks.BLUE_STEEL_BORDERED_GLASS);
+            event.accept(ModBlocks.BLUE_TINTED_DUNGEON_GLASS);
+            event.accept(ModBlocks.BROWN_CITY_FLOOR_BLOCK);
+            event.accept(ModBlocks.BROWN_DUNGEON_BLOCK);
+            event.accept(ModBlocks.BROWN_DUNGEON_PILLAR);
+            event.accept(ModBlocks.BROWN_DUNGEON_STAIRS);
+            event.accept(ModBlocks.BROWN_DYED_STEEL_BLOCK);
+            event.accept(ModBlocks.BROWN_STEEL_BORDERED_GLASS);
+            event.accept(ModBlocks.BROWN_TINTED_DUNGEON_GLASS);
+            event.accept(ModBlocks.CELESTIAL_BONE);
+            event.accept(ModBlocks.CELESTIAL_SILVER_BLOCK);
+            event.accept(ModBlocks.CITY_FLOOR_BLOCK);
+            event.accept(ModBlocks.CLOUD_BLOCK);
+            event.accept(ModBlocks.COBBLED_DARKSTONE);
+            event.accept(ModBlocks.COBBLED_LIGHTSTONE);
+            event.accept(ModBlocks.CYAN_CITY_FLOOR_BLOCK);
+            event.accept(ModBlocks.CYAN_DUNGEON_BLOCK);
+            event.accept(ModBlocks.CYAN_DUNGEON_PILLAR);
+            event.accept(ModBlocks.CYAN_DUNGEON_STAIRS);
+            event.accept(ModBlocks.CYAN_DYED_STEEL_BLOCK);
+            event.accept(ModBlocks.CYAN_STEEL_BORDERED_GLASS);
+            event.accept(ModBlocks.CYAN_TINTED_DUNGEON_GLASS);
+            event.accept(ModBlocks.DARKLANDS_FOREST_GRASS);
+            event.accept(ModBlocks.DARKLANDS_MAHOGANY_LEAVES);
+            event.accept(ModBlocks.DARKLANDS_MAHOGANY_PLANKS);
+            event.accept(ModBlocks.DARKLANDS_MAHOGANY_WOOD);
+            event.accept(ModBlocks.DARKSTONE);
+            event.accept(ModBlocks.DARKSTONE_SLATE);
+            event.accept(ModBlocks.DIAMOND_DUST_BLOCK);
+            event.accept(ModBlocks.DREAM_DIRT);
+            event.accept(ModBlocks.DREAM_DUST_BLOCK);
+            event.accept(ModBlocks.DREAM_GLASS);
+            event.accept(ModBlocks.DREAM_GRASS);
+            event.accept(ModBlocks.DREAM_SAND);
+            event.accept(ModBlocks.DUNGEON_GLASS);
+            event.accept(ModBlocks.FAIRY_WILLOW_LEAVES);
+            event.accept(ModBlocks.FAIRY_WILLOW_PLANKS);
+            event.accept(ModBlocks.FAIRY_WILLOW_WOOD);
+            event.accept(ModBlocks.GOLD_DUST_BLOCK);
+            event.accept(ModBlocks.GRAPHENE_BLOCK);
+            event.accept(ModBlocks.GRAY_CITY_FLOOR_BLOCK);
+            event.accept(ModBlocks.GRAY_DUNGEON_BLOCK);
+            event.accept(ModBlocks.GRAY_DUNGEON_PILLAR);
+            event.accept(ModBlocks.GRAY_DUNGEON_STAIRS);
+            event.accept(ModBlocks.GRAY_DYED_STEEL_BLOCK);
+            event.accept(ModBlocks.GRAY_STEEL_BORDERED_GLASS);
+            event.accept(ModBlocks.GRAY_TINTED_DUNGEON_GLASS);
+            event.accept(ModBlocks.GREEN_CITY_FLOOR_BLOCK);
+            event.accept(ModBlocks.GREEN_DUNGEON_BLOCK);
+            event.accept(ModBlocks.GREEN_DUNGEON_PILLAR);
+            event.accept(ModBlocks.GREEN_DUNGEON_STAIRS);
+            event.accept(ModBlocks.GREEN_DYED_STEEL_BLOCK);
+            event.accept(ModBlocks.GREEN_STEEL_BORDERED_GLASS);
+            event.accept(ModBlocks.GREEN_TINTED_DUNGEON_GLASS);
+            event.accept(ModBlocks.IRON_DUST_BLOCK);
+            event.accept(ModBlocks.LIGHT_BLUE_CITY_FLOOR_BLOCK);
+            event.accept(ModBlocks.LIGHT_BLUE_DUNGEON_BLOCK);
+            event.accept(ModBlocks.LIGHT_BLUE_DUNGEON_PILLAR);
+            event.accept(ModBlocks.LIGHT_BLUE_DUNGEON_STAIRS);
+            event.accept(ModBlocks.LIGHT_BLUE_DYED_STEEL_BLOCK);
+            event.accept(ModBlocks.LIGHT_BLUE_STEEL_BORDERED_GLASS);
+            event.accept(ModBlocks.LIGHT_BLUE_TINTED_DUNGEON_GLASS);
+            event.accept(ModBlocks.LIGHT_DIRT);
+            event.accept(ModBlocks.LIGHT_FIELDS_GRASS);
+            event.accept(ModBlocks.LIGHT_GRASS_BLOCK);
+            event.accept(ModBlocks.LIGHT_GRAY_CITY_FLOOR_BLOCK);
+            event.accept(ModBlocks.LIGHT_GRAY_DUNGEON_BLOCK);
+            event.accept(ModBlocks.LIGHT_GRAY_DUNGEON_PILLAR);
+            event.accept(ModBlocks.LIGHT_GRAY_DUNGEON_STAIRS);
+            event.accept(ModBlocks.LIGHT_GRAY_DYED_STEEL_BLOCK);
+            event.accept(ModBlocks.LIGHT_GRAY_STEEL_BORDERED_GLASS);
+            event.accept(ModBlocks.LIGHT_GRAY_TINTED_DUNGEON_GLASS);
+            event.accept(ModBlocks.LIGHTSTONE);
+            event.accept(ModBlocks.LIME_CITY_FLOOR_BLOCK);
+            event.accept(ModBlocks.LIME_DUNGEON_BLOCK);
+            event.accept(ModBlocks.LIME_DUNGEON_PILLAR);
+            event.accept(ModBlocks.LIME_DUNGEON_STAIRS);
+            event.accept(ModBlocks.LIME_DYED_STEEL_BLOCK);
+            event.accept(ModBlocks.LIME_STEEL_BORDERED_GLASS);
+            event.accept(ModBlocks.LIME_TINTED_DUNGEON_GLASS);
+            event.accept(ModBlocks.MAGENTA_CITY_FLOOR_BLOCK);
+            event.accept(ModBlocks.MAGENTA_DUNGEON_BLOCK);
+            event.accept(ModBlocks.MAGENTA_DUNGEON_PILLAR);
+            event.accept(ModBlocks.MAGENTA_DUNGEON_STAIRS);
+            event.accept(ModBlocks.MAGENTA_DYED_STEEL_BLOCK);
+            event.accept(ModBlocks.MAGENTA_STEEL_BORDERED_GLASS);
+            event.accept(ModBlocks.MAGENTA_TINTED_DUNGEON_GLASS);
+            event.accept(ModBlocks.NIGHTMARE_DUST_BLOCK);
+            event.accept(ModBlocks.ORANGE_CITY_FLOOR_BLOCK);
+            event.accept(ModBlocks.ORANGE_DUNGEON_BLOCK);
+            event.accept(ModBlocks.ORANGE_DUNGEON_PILLAR);
+            event.accept(ModBlocks.ORANGE_DUNGEON_STAIRS);
+            event.accept(ModBlocks.ORANGE_DYED_STEEL_BLOCK);
+            event.accept(ModBlocks.ORANGE_STEEL_BORDERED_GLASS);
+            event.accept(ModBlocks.ORANGE_TINTED_DUNGEON_GLASS);
+            event.accept(ModBlocks.PINK_CITY_FLOOR_BLOCK);
+            event.accept(ModBlocks.PINK_DUNGEON_BLOCK);
+            event.accept(ModBlocks.PINK_DUNGEON_PILLAR);
+            event.accept(ModBlocks.PINK_DUNGEON_STAIRS);
+            event.accept(ModBlocks.PINK_DYED_STEEL_BLOCK);
+            event.accept(ModBlocks.PINK_STEEL_BORDERED_GLASS);
+            event.accept(ModBlocks.PINK_TINTED_DUNGEON_GLASS);
+            event.accept(ModBlocks.PURPLE_CITY_FLOOR_BLOCK);
+            event.accept(ModBlocks.PURPLE_DUNGEON_BLOCK);
+            event.accept(ModBlocks.PURPLE_DUNGEON_PILLAR);
+            event.accept(ModBlocks.PURPLE_DUNGEON_STAIRS);
+            event.accept(ModBlocks.PURPLE_DYED_STEEL_BLOCK);
+            event.accept(ModBlocks.PURPLE_STEEL_BORDERED_GLASS);
+            event.accept(ModBlocks.PURPLE_TINTED_DUNGEON_GLASS);
+            event.accept(ModBlocks.RAW_SILVER_BLOCK);
+            event.accept(ModBlocks.RAW_TRANITE_BLOCK);
+            event.accept(ModBlocks.RAW_WOLFRAMITE_BLOCK);
+            event.accept(ModBlocks.RED_CITY_FLOOR_BLOCK);
+            event.accept(ModBlocks.RED_DUNGEON_BLOCK);
+            event.accept(ModBlocks.RED_DUNGEON_PILLAR);
+            event.accept(ModBlocks.RED_DUNGEON_STAIRS);
+            event.accept(ModBlocks.RED_DYED_STEEL_BLOCK);
+            event.accept(ModBlocks.RED_STEEL_BORDERED_GLASS);
+            event.accept(ModBlocks.RED_TINTED_DUNGEON_GLASS);
+            event.accept(ModBlocks.RUBBER_BLOCK);
+            event.accept(ModBlocks.SCRAPS_BLOCK);
+            event.accept(ModBlocks.SILVER_ORE);
+            event.accept(ModBlocks.STEEL_BLOCK);
+            event.accept(ModBlocks.STEEL_BORDERED_GLASS);
+            event.accept(ModBlocks.THERMITE_BLOCK);
+            event.accept(ModBlocks.THERMITE_ORE);
+            event.accept(ModBlocks.TINTED_DUNGEON_GLASS);
+            event.accept(ModBlocks.TRANITE_BLOCK);
+            event.accept(ModBlocks.TRANITE_ORE);
+            event.accept(ModBlocks.TUNGSTEN_BLOCK);
+            event.accept(ModBlocks.TUNGSTEN_ORE);
+            event.accept(ModBlocks.WASTELAND_COBBLESTONE);
+            event.accept(ModBlocks.WASTELAND_STONE);
+            event.accept(ModBlocks.WHITE_CITY_FLOOR_BLOCK);
+            event.accept(ModBlocks.WHITE_DUNGEON_BLOCK);
+            event.accept(ModBlocks.WHITE_DUNGEON_PILLAR);
+            event.accept(ModBlocks.WHITE_DUNGEON_STAIRS);
+            event.accept(ModBlocks.WHITE_DYED_STEEL_BLOCK);
+            event.accept(ModBlocks.WHITE_STEEL_BORDERED_GLASS);
+            event.accept(ModBlocks.WHITE_TINTED_DUNGEON_GLASS);
+            event.accept(ModBlocks.WILLOW_LEAVES);
+            event.accept(ModBlocks.WILLOW_PLANKS);
+            event.accept(ModBlocks.WILLOW_WOOD);
+            event.accept(ModBlocks.WOLFRAMITE_ORE);
+            event.accept(ModBlocks.YELLOW_CITY_FLOOR_BLOCK);
+            event.accept(ModBlocks.YELLOW_DUNGEON_BLOCK);
+            event.accept(ModBlocks.YELLOW_DUNGEON_PILLAR);
+            event.accept(ModBlocks.YELLOW_DUNGEON_STAIRS);
+            event.accept(ModBlocks.YELLOW_DYED_STEEL_BLOCK);
+            event.accept(ModBlocks.YELLOW_STEEL_BORDERED_GLASS);
+            event.accept(ModBlocks.YELLOW_TINTED_DUNGEON_GLASS);
+            event.accept(ModBlocks.SILVER_BLOCK);
         }
     }
 
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        // Do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
 }

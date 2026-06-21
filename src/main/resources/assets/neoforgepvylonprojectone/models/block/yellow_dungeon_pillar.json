@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "neoforgepvylonprojectone:block/yellow_dungeon_pillar"
+  }
+}
